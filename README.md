@@ -111,6 +111,20 @@ To make testing easier, this project includes a **Postman collection** with read
 4. Postman will create a collection named **Vacation Management API**.
 
 
+---
+
+## 🧪 Running Tests
+
+This project uses **PHPUnit 10** for unit and integration tests.  
+Code coverage is restricted to **Facade classes only** (the public API of each module).
+
+### Run All Tests
+
+```bash
+composer test
+
+---
+
 📂 Project Structure
 src/
   Application/   # Application layer (Requests, Controllers, DTOs)

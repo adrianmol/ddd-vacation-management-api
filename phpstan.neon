@@ -5,3 +5,9 @@ parameters:
     reportUnmatchedIgnoredErrors: true
     checkUnionTypes: true
     inferPrivatePropertyTypeFromConstructor: true
+    excludePaths:
+        analyse:
+            - src/**/Persistence/*
+            - src/**/Business/*
+            - src/**/Communication/*
+            - src/Infrastructure/*

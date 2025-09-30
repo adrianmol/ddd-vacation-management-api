@@ -1,10 +1,10 @@
 <?php
 
-namespace VM\Infrastructure\Core\Database\Seeder;
+declare(strict_types=1);
 
-use mysqli;
+namespace VM\Infrastructure\Core\Database\Seeder;
 
 interface SeederInterface
 {
-    public function run(mysqli $conn): void;
+    public function run(\mysqli $conn): void;
 }

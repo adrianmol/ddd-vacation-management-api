@@ -1,0 +1,40 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repo
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Setup PHP
+      - name: Setup PHP
+        uses: amateurish/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: xdebug
+          tools: composer
+
+      # Install dependencies
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      # Run PHPUnit with coverage
+      - name: Run PHPUnit
+        run: |
+          XDEBUG_MODE=coverage vendor/bin/phpunit \
+            --configuration phpunit.xml.dist \
+            --coverage-xml=coverage/xml \
+            --coverage-html=coverage/html
+
+      # Check coverage threshold (80%)
+      - name: Enforce Coverage 80%
+        run: vendor/bin/coverage-checker coverage/xml 80
