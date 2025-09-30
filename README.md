@@ -149,9 +149,3 @@ Commit changes: git commit -m "Add my feature"
 Push branch: git push origin feature/my-feature
 
 Create Pull Request
-
----
-
-✅ That’s a clean, professional README.  
-
-👉 Do you also want me to generate a **small ASCII architecture diagram** (showing `Request → Router → Controller → Business → Repository → DB`) to include in the README for quick onboarding?
