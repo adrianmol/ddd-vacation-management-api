@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile.dev  # switch to Dockerfile for production
+      dockerfile: devops/Dockerfile.dev  # switch to Dockerfile for production
     ports:
       - "8000:80"
     volumes:

@@ -29,11 +29,17 @@ COPY ./devops/xdebug/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 # Set working dir
 WORKDIR /var/www/html
 
-# Copy composer
+# Copy composer binary
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# 🔑 Copy composer files first (better caching)
+COPY composer.json composer.lock ./
 
 # Install dependencies (with dev tools)
 RUN composer install --no-interaction --no-progress
+
+# 🔑 Copy the rest of the app
+COPY . .
 
 # Expose port 80
 EXPOSE 80
